@@ -1,4 +1,4 @@
-dash
+dash-2.4.04c3
 ldap3
 flask-login
 python-dotenv

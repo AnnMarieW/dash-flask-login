@@ -5,7 +5,7 @@ from flask_login import login_user, LoginManager, UserMixin, logout_user, curren
 
 import dash
 from dash import dcc, html, Input, Output, State
-import dash_labs as dl
+#import dash_labs as dl
 
 # CREDIT: This code is adapted for the dash-labs `pages` plugin based on Nader Elshehabi's  article:
 #   https://dev.to/naderelshehabi/securing-plotly-dash-using-flask-login-4ia2
@@ -17,8 +17,8 @@ server = Flask(__name__)
 app = dash.Dash(
     __name__,
     server=server,
-    plugins=[dl.plugins.pages],
-    suppress_callback_exceptions=True,
+    use_pages=True,
+    suppress_callback_exceptions=True
 )
 
 # Updating the Flask Server configuration with Secret Key to encrypt the user session cookie
@@ -51,7 +51,7 @@ app.layout = html.Div(
         dcc.Store(id="login-status", storage_type="session"),
         html.Div(id="user-status-header"),
         html.Hr(),
-        dl.plugins.page_container,
+        dash.page_container,
     ]
 )
 
